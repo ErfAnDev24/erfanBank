@@ -1,0 +1,15 @@
+package com.example.loans.exception;
+
+import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+@ResponseStatus(HttpStatus.NOT_FOUND)
+@AllArgsConstructor
+public class ResourceNotFoundException extends RuntimeException{
+
+    public ResourceNotFoundException(String resourceName,String fieldName,String fieldValue){
+        super(String.format("%s not found with given input %s : %s",resourceName,fieldName,fieldValue));
+    }
+
+}
