@@ -37,12 +37,26 @@ public class CardsServiceImpl implements ICardsService {
 
     @Override
     public boolean updateCard(CardsDto cardsDto) {
+        Cards cards = cardsRepository.findByCardNumber(cardsDto.getCardNumber()).orElseThrow(
+                ()-> new ResourceNotFoundException("Cards","Card number",cardsDto.getCardNumber())
+        );
+        CardsMapper.mapToCards(cardsDto,cards);
+        cardsRepository.save(cards);
+        return true;
+    }
+
+    @Override
+    public boolean deleteCard(String mobileNumber) {
+        Cards cards = cardsRepository.findByMobileNumber(mobileNumber).orElseThrow(
+                ()-> new ResourceNotFoundException("Cards","Mobile Number",mobileNumber)
+        );
+        cardsRepository.deleteById(cards.getCardId());
         return true;
     }
 
     public Cards createNewCard(String mobileNumber){
         Cards newCard = new Cards();
-        long randomCardNumber = 1000000000L + new Random().nextInt(900000000);
+        long randomCardNumber = 100000000000L + new Random().nextInt(900000000);
         newCard.setCardNumber(Long.valueOf(randomCardNumber).toString());
         newCard.setMobileNumber(mobileNumber);
         newCard.setCardType(CardsConstants.CREDIT_CARD);

@@ -7,6 +7,7 @@ public class CardsMapper {
 
     public static Cards mapToCards(CardsDto cardsDto ,Cards cards){
         cards.setCardNumber(cardsDto.getCardNumber());
+        cards.setMobileNumber(cardsDto.getMobileNumber());
         cards.setCardType(cardsDto.getCardType());
         cards.setTotalLimit(cardsDto.getTotalLimit());
         cards.setAvailableAmount(cardsDto.getAvailableAmount());
@@ -16,6 +17,7 @@ public class CardsMapper {
 
     public static CardsDto mapToCardsDto(Cards cards,CardsDto cardsDto){
         cardsDto.setCardNumber(cards.getCardNumber());
+        cardsDto.setMobileNumber(cards.getMobileNumber());
         cardsDto.setCardType(cards.getCardType());
         cardsDto.setTotalLimit(cards.getTotalLimit());
         cardsDto.setAvailableAmount(cards.getAvailableAmount());

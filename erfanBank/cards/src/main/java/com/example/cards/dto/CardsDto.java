@@ -14,11 +14,11 @@ import lombok.NoArgsConstructor;
 public class CardsDto {
 
     @NotEmpty(message = "Mobile number can not be null or empty")
-    @Pattern(regexp = "(^$|[0-9]{10})",message = "Mobile number must be 10 digits")
+    @Pattern(regexp = "^[0-9]{10}$",message = "Mobile number must be 10 digits")
     private String mobileNumber;
 
     @NotEmpty(message = "Card number can not be null or empty")
-    @Pattern(regexp = "(^$|[0-9]{12})" , message = "Card number must be 10 digits")
+    @Pattern(regexp = "^[0-9]{12}$" , message = "Card number must be 12 digits")
     private String cardNumber;
 
     @NotEmpty(message = "Card number can not be null or empty")
