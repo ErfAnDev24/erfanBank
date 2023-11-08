@@ -8,6 +8,10 @@ import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Data
+@Schema(
+        name ="Customer",
+        description = "schema to hold customer information"
+)
 public class CustomerDto {
 
     @NotEmpty(message = "Name can not be null or empty")
