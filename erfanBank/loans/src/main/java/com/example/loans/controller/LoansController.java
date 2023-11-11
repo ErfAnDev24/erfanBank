@@ -1,10 +1,13 @@
 package com.example.loans.controller;
 
 import com.example.loans.constants.LoansConstants;
+import com.example.loans.dto.ErrorResponseDto;
+import com.example.loans.dto.LoansContactInfoDto;
 import com.example.loans.dto.LoansDto;
 import com.example.loans.dto.ResponseDto;
 import com.example.loans.service.ILoansService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -12,19 +15,34 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@AllArgsConstructor
+@Validated
 @RequestMapping(value = "/api" ,produces = MediaType.APPLICATION_JSON_VALUE)
 @Tag(name = "Loans REST APIs"
 ,description = "these are the APIs which are implemented for CRUD operations in Loans microservice")
 public class LoansController {
 
-    ILoansService iLoansService;
+    @Autowired
+    private ILoansService iLoansService;
+
+    @Autowired
+    private Environment environment;
+
+    @Value("${build.version}")
+    private String buildVersion;
+
+    @Autowired
+    private LoansContactInfoDto loansContactInfoDto;
+
     @PostMapping("/create")
     @Operation(
             summary = "create loan API"
@@ -32,7 +50,7 @@ public class LoansController {
     )
     @ApiResponses({
             @ApiResponse(responseCode = "200",description = "Http Status OK"),
-            @ApiResponse(responseCode = "500" , description = "Http Status Internal Server error")
+            @ApiResponse(responseCode = "500" , description = "Http Status Internal Server error",content = @Content(schema = @Schema(implementation = ErrorResponseDto.class)))
     })
     public ResponseEntity<ResponseDto> createLoan(@Valid @RequestParam
                                        @Pattern(regexp="(^$|[0-9]{10})",message = "mobile number must be 10 digits")
@@ -50,7 +68,7 @@ public class LoansController {
     )
     @ApiResponses({
             @ApiResponse(responseCode = "200" , description = "Http Status OK"),
-            @ApiResponse(responseCode = "500" , description = "Http Status Internal Server error")
+            @ApiResponse(responseCode = "500" , description = "Http Status Internal Server error",content = @Content(schema = @Schema(implementation = ErrorResponseDto.class)))
     })
     public ResponseEntity<LoansDto> fetchLoan(@Valid @RequestParam @Pattern(regexp="(^$|[0-9]{10})",message = "mobile number must be 10 digits") String mobileNumber){
         LoansDto loansDto = iLoansService.fetchLoan(mobileNumber);
@@ -67,7 +85,7 @@ public class LoansController {
     @ApiResponses({
             @ApiResponse(responseCode = "200" , description = "Http status OK"),
             @ApiResponse(responseCode = "417" , description = "Exception Failed"),
-            @ApiResponse(responseCode = "500" , description = "Http Status Internal Server error")
+            @ApiResponse(responseCode = "500" , description = "Http Status Internal Server error",content = @Content(schema = @Schema(implementation = ErrorResponseDto.class)))
     })
     public ResponseEntity<ResponseDto> updateLoans(@Valid @RequestBody LoansDto loansDto){
         boolean isUpdated = iLoansService.updateLoan(loansDto);
@@ -89,7 +107,7 @@ public class LoansController {
     )
     @ApiResponses({
             @ApiResponse(responseCode = "200"  ,description = "Http Status OK")
-            ,@ApiResponse(responseCode = "500" , description = "Http Status Internal Server error")
+            ,@ApiResponse(responseCode = "500" , description = "Http Status Internal Server error",content = @Content(schema = @Schema(implementation = ErrorResponseDto.class)))
             ,@ApiResponse(responseCode = "417" , description = "Exception Failed")
     })
     public ResponseEntity<ResponseDto> deleteLoans(@Valid @RequestParam @Pattern(regexp="(^$|[0-9]{10})",message = "mobile number must be 10 digits") String mobileNumber){
@@ -105,4 +123,21 @@ public class LoansController {
         }
 
     }
+    @GetMapping("/java-version")
+    public ResponseEntity<String> getJavaVersion(){
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(environment.getProperty("JAVA_HOME"));
+    }
+    @GetMapping("/build-info")
+    public ResponseEntity<String> getBuildInfo(){
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(buildVersion);
+    }
+    @GetMapping("/contact-info")
+    public ResponseEntity<LoansContactInfoDto> getContactInfo(){
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(loansContactInfoDto);
+    }
+
 }

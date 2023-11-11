@@ -3,9 +3,12 @@ package com.example.cards.controller;
 
 import com.example.cards.constants.CardsConstants;
 import com.example.cards.dto.CardsDto;
+import com.example.cards.dto.ErrorResponseDto;
 import com.example.cards.dto.ResponseDto;
 import com.example.cards.service.ICardsService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -34,7 +37,8 @@ public class CardsController {
             description = "Http Status code Created")
             ,
             @ApiResponse(responseCode = "500",
-            description = "Https Status Internal Server Error")
+            description = "Https Status Internal Server Error"
+            ,content = @Content(schema = @Schema(implementation = ErrorResponseDto.class)))
     }
     )
     @PostMapping("/create")
@@ -54,7 +58,8 @@ public class CardsController {
             description = "This is an API which you can fetch Cards details from it")
             ,
             @ApiResponse(responseCode = "500",
-            description = "Https Status Internal Server Error")
+            description = "Https Status Internal Server Error"
+            ,content = @Content(schema = @Schema(implementation = ErrorResponseDto.class)))
     })
     public ResponseEntity<CardsDto> fetchCardDetails(@RequestParam @Pattern(regexp = "^[0-9]{10}$", message = "Mobile number must be 10 digits") String mobileNumber){
         CardsDto cardsDto = iCardsService.fetchCard(mobileNumber);
@@ -66,9 +71,10 @@ public class CardsController {
     @ApiResponses({
             @ApiResponse(responseCode = "200" , description = "Http Status OK")
             ,
-            @ApiResponse(responseCode = "417" , description = "Exception failed")
+            @ApiResponse(responseCode = "417" , description = "Exception failed",content = @Content(schema = @Schema(implementation = ErrorResponseDto.class)))
             ,
-            @ApiResponse(responseCode = "500" , description = "Http Status Internal Server error")
+            @ApiResponse(responseCode = "500" , description = "Http Status Internal Server error"
+            ,content = @Content(schema = @Schema(implementation = ErrorResponseDto.class)))
     })
     public ResponseEntity<ResponseDto> updateCard(@Valid @RequestBody CardsDto cardsDto){
         boolean isUpdated = iCardsService.updateCard(cardsDto);
@@ -85,7 +91,8 @@ public class CardsController {
     @ApiResponses({
             @ApiResponse(responseCode = "200" , description = "Http Status OK"),
             @ApiResponse(responseCode = "417" , description = "Exception Failed"),
-            @ApiResponse(responseCode = "500" , description = "Http Status Internal Server Error")
+            @ApiResponse(responseCode = "500" , description = "Http Status Internal Server Error"
+            ,content = @Content(schema = @Schema(implementation = ErrorResponseDto.class)))
     })
     public ResponseEntity<ResponseDto> deleteCard(@RequestParam @Pattern(regexp = "^[0-9]{10}$", message = "Mobile number must be 10 digits") String mobileNumber){
         boolean isDeleted = iCardsService.deleteCard(mobileNumber);
