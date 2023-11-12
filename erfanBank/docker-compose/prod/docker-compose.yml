@@ -1,0 +1,66 @@
+services:
+  rabbit:
+    image: rabbitmq:3-12-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    healthcheck:
+      test: rabbitmq-diagnostics check_port_connectivity
+      timeout: 5s
+      retries: 10
+      start_period: 5s
+      interval: 10s
+    extends:
+      file: common-config.yml
+      service: network-deploy-service
+
+  configserver:
+    image: cassandra
+    container_name: configserver_ms
+    ports:
+      - "8071:8071"
+    depends_on:
+      rabbit:
+        condition: service_healthy
+    healthcheck:
+      test: "curl --fail --silent localhost:8071/actuator/health/readiness | grep UP || exit 1"
+      timeout: 5s
+      retries: 10
+      start_period: 5s
+      interval: 10s
+    extends:
+      file: common-config.yml
+      service: microservice-base-config
+
+  accounts:
+    image: "erfan24/accounts"
+    container_name: accounts_ms
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_APPLICAION_NAME: "accounts"
+    extends:
+      file: common-config.yml
+      service: microservice-configserver-config
+
+  loans:
+    image: "erfan24/loans"
+    container_name: loans_ms
+    ports:
+      - "8090:8090"
+    environment:
+      SPRING_APPLICAION_NAME: "loans"
+    extends:
+      file: common-config.yml
+      service: microservice-configserver-config
+
+  cards:
+    image: "erfan24/cards"
+    container_name: cards_ms
+    ports:
+      - "9000:9000"
+    environment:
+      SPRING_APPLICAION_NAME: "cards"
+    extends:
+      file: common-config.yml
+      service: microservice-configserver-config

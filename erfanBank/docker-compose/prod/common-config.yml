@@ -20,5 +20,5 @@ services:
       configserver:
         condition: service-healthy
     environments:
-      SPRING_PROFILES_ACTIVE: default
+      SPRING_PROFILES_ACTIVE: prod
       SPRING_CONFIG_IMPORT: configserver:http://configserver:8071/
