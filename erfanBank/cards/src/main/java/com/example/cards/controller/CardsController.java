@@ -2,6 +2,7 @@ package com.example.cards.controller;
 
 
 import com.example.cards.constants.CardsConstants;
+import com.example.cards.dto.CardsContactInfoDto;
 import com.example.cards.dto.CardsDto;
 import com.example.cards.dto.ErrorResponseDto;
 import com.example.cards.dto.ResponseDto;
@@ -15,6 +16,9 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
@@ -23,12 +27,23 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/api",produces = MediaType.APPLICATION_JSON_VALUE)
-@AllArgsConstructor
 @Tag(name = "REST APIs",
 description = "REST APIs which involved CRUD APIs for create , fetch , update and delete Cards details")
 public class CardsController {
 
     private ICardsService iCardsService;
+
+    @Autowired
+    private CardsContactInfoDto cardsContactInfoDto;
+
+    @Autowired
+    private Environment environment;
+
+    /*@Value("${build.version}")
+    private String buildVersion;*/
+    public CardsController(ICardsService iCardsService) {
+        this.iCardsService = iCardsService;
+    }
 
     @Operation(summary = "creating cards",
     description = "This is an API for creating cards")
@@ -104,5 +119,23 @@ public class CardsController {
             return ResponseEntity
                     .status(HttpStatus.EXPECTATION_FAILED)
                     .body(new ResponseDto(CardsConstants.STATUS_417,CardsConstants.MSG_417_DELETE));
+    }
+
+    @GetMapping("/contact-info")
+    public ResponseEntity<CardsContactInfoDto> getCantactInfo() {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(cardsContactInfoDto);
+    }
+
+    /*@GetMapping
+    public ResponseEntity<String> getBuildVersion() {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(buildVersion);
+    }*/
+
+    @GetMapping("/java-version")
+    public ResponseEntity<String> getJavaVersion() {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(environment.getProperty("JAVA_HOME"));
     }
 }

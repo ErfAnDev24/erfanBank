@@ -12,7 +12,7 @@ spring:
         # search-locations: "file:///Users//eazybytes//Documents//config"
         git:
           uri: "https://github.com/ErfAnDev24/erfanBank-config"
-          default-label: master
+          default-label: main
           clone-on-start: true
           force-pull: true
           timeout: 5
