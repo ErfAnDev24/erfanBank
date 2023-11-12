@@ -1,0 +1,11 @@
+build:
+  version: "1.0"
+
+cards:
+  message: "this is a message from Dev team"
+  contactDetails:
+    name: "ErfAn Pezeshkpour"
+    email: "erfan@gmail.com"
+  onCallSupport:
+    -(021) 66-666
+    -(021) 77-777

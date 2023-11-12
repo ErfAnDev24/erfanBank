@@ -1,0 +1,11 @@
+build:
+  version: "1.0"
+
+loans:
+  message: "this is a message from QA team"
+  contactDetails:
+    name: "Ali Akbari"
+    email: "akbari@gmail.com"
+  onCallSupport:
+    - (021) 123-456
+    - (021) 123-456

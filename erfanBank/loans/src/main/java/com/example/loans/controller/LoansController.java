@@ -31,14 +31,16 @@ import org.springframework.web.bind.annotation.*;
 ,description = "these are the APIs which are implemented for CRUD operations in Loans microservice")
 public class LoansController {
 
-    @Autowired
     private ILoansService iLoansService;
+    public LoansController(ILoansService iLoansService){
+        this.iLoansService = iLoansService;
+    }
+
+    /*@Value("${build.version}")
+    private String buildVersion;*/
 
     @Autowired
     private Environment environment;
-
-    @Value("${build.version}")
-    private String buildVersion;
 
     @Autowired
     private LoansContactInfoDto loansContactInfoDto;
@@ -128,11 +130,11 @@ public class LoansController {
         return ResponseEntity.status(HttpStatus.OK)
                 .body(environment.getProperty("JAVA_HOME"));
     }
-    @GetMapping("/build-info")
+    /*@GetMapping("/build-info")
     public ResponseEntity<String> getBuildInfo(){
         return ResponseEntity.status(HttpStatus.OK)
                 .body(buildVersion);
-    }
+    }*/
     @GetMapping("/contact-info")
     public ResponseEntity<LoansContactInfoDto> getContactInfo(){
         return ResponseEntity
