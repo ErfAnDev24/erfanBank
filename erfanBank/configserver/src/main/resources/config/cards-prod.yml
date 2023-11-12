@@ -1,0 +1,11 @@
+build:
+  version: "1.0"
+
+cards:
+  message: "this is a message from prod team"
+  contactDetails:
+    name: "Ali Karimi"
+    email: "karimi@gmail.com"
+  onCallSupport:
+    -(021) 88-888
+    -(021) 98-988

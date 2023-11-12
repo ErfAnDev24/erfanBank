@@ -1,0 +1,11 @@
+build:
+  version: "1.0"
+
+loans:
+  message: "Welcome to ErfAn Bank QA APIs"
+  contactDetails:
+    name: "Ali Akbari - QA Lead"
+    email: "akbari@gmail.com"
+  onCallSupport:
+    - (021) 123-456
+    - (021) 123-456

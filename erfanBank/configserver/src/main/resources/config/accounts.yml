@@ -1,0 +1,11 @@
+build:
+  version: "1.0"
+
+accounts:
+  message: "this is a message form Dev team"
+  contactDetails:
+    name: "ErfAn Pezeshkpour"
+    email: "erfan@gmail.com"
+  onCallSupport:
+    - (021 6420)
+    - (021 6521)
