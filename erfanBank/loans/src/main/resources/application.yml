@@ -22,8 +22,33 @@ spring:
     init:
       mode: always
 
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8070/eureka
+
 management:
   endpoints:
     web:
       exposure:
         include: "*"
+  endpoint:
+    shutdown:
+      enabled: true
+  info:
+    env:
+      enabled: true
+
+endpoints:
+    shutdown:
+      enabled: true
+
+info:
+  app:
+    name: "loans"
+    description: "loans ErfAn bank application"
+    version: "1.0.0"

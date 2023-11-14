@@ -14,6 +14,26 @@ services:
       file: common-config.yml
       service: network-deploy-service
 
+  eurekaserver:
+    image: "erfan24/eurekaserver"
+    container_name: eurekaserver_ms
+    ports:
+      - "8070:8070"
+    depends_on:
+      configserver:
+        condition: service_healthy
+    healthcheck:
+        test: "curl --fail --silent localhost:8070/actuator/health/readiness | grep UP || exit 1"
+        timeout: 5s
+        retries: 10
+        start_period: 5s
+        interval: 10s
+    environment:
+      SPRING_APPLICATION_NAME: "eurekaserver"
+    extends:
+      file: common-config.yml
+      service: microservice-configserver-config
+
   configserver:
     image: cassandra
     container_name: configserver_ms
@@ -41,7 +61,7 @@ services:
       SPRING_APPLICAION_NAME: "accounts"
     extends:
       file: common-config.yml
-      service: microservice-configserver-config
+      service: microservice-eureka-config
 
   loans:
     image: "erfan24/loans"
@@ -52,7 +72,7 @@ services:
       SPRING_APPLICAION_NAME: "loans"
     extends:
       file: common-config.yml
-      service: microservice-configserver-config
+      service: microservice-eureka-config
 
   cards:
     image: "erfan24/cards"
@@ -63,4 +83,4 @@ services:
       SPRING_APPLICAION_NAME: "cards"
     extends:
       file: common-config.yml
-      service: microservice-configserver-config
+      service: microservice-eureka-config

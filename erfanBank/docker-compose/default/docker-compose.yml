@@ -45,8 +45,29 @@ services:
       file: common-config.yml
       service: network-deploy-service
 
+  eurekaserver:
+    image: erfan24/eurekaserver
+    container_name: eurekaserver_ms
+    ports:
+      - "8070:8070"
+    depends_on:
+      configserver:
+        condition: service_healthy
+    healthcheck:
+      test: "curl --fail --silent localhost:8070/actuator/health/readiness | grep UP || exit 1"
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    extends:
+      file: common-config.yml
+      service: microservice-configserver-config
+    environment:
+      SPRING_APPLICATION_NAME: "eurekaserver"
+
+
   configserver:
-    image: cassandra
+    image: erfan24/configserver
     container_name: configserver_ms
     ports:
       - "8071:8071"

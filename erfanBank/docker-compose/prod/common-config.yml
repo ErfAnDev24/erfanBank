@@ -3,6 +3,19 @@ services:
     networks:
       - erfanbank
 
+  microservice-db-config:
+    extends: network-deploy-service
+    image: mysql
+    healthcheck:
+      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+      timeout: 5s
+      interval: 10s
+      retries: 10
+      start_period: 10s
+    environment:
+      MYSQL_ROOT_PASSWORD : root
+
+
   microservice-base-config:
     extends:
       network-deploy-service
@@ -22,3 +35,12 @@ services:
     environments:
       SPRING_PROFILES_ACTIVE: prod
       SPRING_CONFIG_IMPORT: configserver:http://configserver:8071/
+
+  microservice-eurake-config:
+    extends:
+      microservice-configserver-config
+    depends_on:
+      eurekaserver:
+        condition: service-healthy
+    environments:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eurekaserver:8070/eureka/
