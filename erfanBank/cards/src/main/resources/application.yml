@@ -9,27 +9,27 @@ spring:
     url: jdbc:mysql://localhost:3308/cardsdb
     username: root
     password: root
-  sql:
-    init:
-      mode: always
   jpa:
     show-sql: true
   config:
-    import: "optional:configserver://http:localhost:8071/"
+    import: "optional:configserver:http://localhost:8071/"
   rabbitmq:
     host: "localhost"
     port: 5672
     username: "guest"
     password: "guest"
+  sql:
+    init:
+      mode: always
 
 eureka:
   instance:
     prefer-ip-address: true
   client:
-    register-with-eureka: true
     fetch-registry: true
+    register-with-eureka: true
     service-url:
-      defaultZone: http://localhost:8070/eureka
+      defaultZone: http://localhost:8070/eureka/
 
 management:
   endpoints:
@@ -44,11 +44,11 @@ management:
       enabled: true
 
 endpoints:
-    shutdown:
-      enabled: true
+  shutdown:
+    enabled: true
 
 info:
   app:
-    name: "Cards"
-    description : "Cards ErfAn Bank application"
-    version : "1.0.0"
+    name: "cards"
+    description: "loans ErfAn bank application"
+    version: "1.0.0"

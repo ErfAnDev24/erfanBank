@@ -21,6 +21,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class CustomerController {
 
     ICustomerService iCustomerService;
+
+    public CustomerController(ICustomerService iCustomerService) {
+        this.iCustomerService = iCustomerService;
+    }
+
     @GetMapping("/fetchCustomerDetails")
     public ResponseEntity<CustomerDetailsDto> fetchCustomerDetails(@Valid @RequestParam @Pattern(regexp = "^[0-9]{10}$" , message = "mobile number must be 10 digits")
                                                                     String mobileNumber){

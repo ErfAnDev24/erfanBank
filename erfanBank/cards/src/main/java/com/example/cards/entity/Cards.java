@@ -12,7 +12,7 @@ import org.hibernate.annotations.GenericGenerator;
 public class Cards extends BaseEntity{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO,generator = "navtive")
+    @GeneratedValue(strategy = GenerationType.AUTO,generator = "native")
     @GenericGenerator(name = "native" , strategy = "native")
     private Long cardId;
 

@@ -1,8 +1,8 @@
 spring:
   application:
-    name: "eurakaserver"
+    name: "eurekaserver"
   config:
-    import: "optional:configserver:http://localhost:8071"
+    import: "optional:configserver:http://localhost:8071/"
 
 management:
   endpoints:
@@ -10,9 +10,9 @@ management:
       exposure:
         include: "*"
   health:
-    readinessstate:
+    readiness-state:
       enabled: true
-    livenessstate:
+    liveness-state:
       enabled: true
   endpoint:
     health:
