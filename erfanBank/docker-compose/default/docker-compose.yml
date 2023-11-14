@@ -1,4 +1,35 @@
 services:
+
+  accountsdb:
+    container_name: accountsdb
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: accountsdb
+    extends:
+      file: common-config.yml
+      service: microservice-db-config
+
+  loansdb:
+    container_name: loansdb
+    ports:
+      - 3307:3306
+    environment:
+      MYSQL_DATABASE: loansdb
+    extends:
+      file: common-config.yml
+      service: microservice-db-config
+
+  cardsdb:
+    container_name: cardsdb
+    ports:
+      - 3308:3306
+    environment:
+      MYSQL_DATABASE: cardsdb
+    extends:
+      file: common-config.yml
+      service: microservice-db-config
+
   rabbit:
     image: rabbitmq:3-12-management
     ports:
@@ -39,6 +70,10 @@ services:
       - "8080:8080"
     environment:
       SPRING_APPLICAION_NAME: "accounts"
+      SPRING_DATASOURCE_URL: "jdbc:mysql://accountsdb:3306/accountsdb"
+    depends_on:
+      accountsdb:
+        condition: service_healthy
     extends:
       file: common-config.yml
       service: microservice-configserver-config
@@ -50,6 +85,10 @@ services:
       - "8090:8090"
     environment:
       SPRING_APPLICAION_NAME: "loans"
+      SPRING_DATASOURCE_URL: "jdbc:mysql://loansdb:3307/loansdb"
+    depends_on:
+      loansdb:
+        condition: service_healthy
     extends:
       file: common-config.yml
       service: microservice-configserver-config
@@ -61,6 +100,7 @@ services:
       - "9000:9000"
     environment:
       SPRING_APPLICAION_NAME: "cards"
+      SPRING_DATASOURCE_URL: "jdbc:mysql://cardsdb:3308/cardsdb"
     extends:
       file: common-config.yml
       service: microservice-configserver-config

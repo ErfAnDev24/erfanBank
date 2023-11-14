@@ -6,16 +6,13 @@ spring:
   profiles:
     active: "prod"
   datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:testdb
-    username: sa
-    password: ''
-  h2:
-    console:
-      enabled: true
+    url: jdbc:mysql://localhost:3306/accountsdb
+    username: root
+    password: root
+  sql:
+    init:
+      mode: always
   jpa:
-    hibernate:
-      ddl-auto: update
     show-sql: true
   config:
     import: "optional:configserver://http:localhost:8071/"

@@ -3,6 +3,19 @@ services:
     networks:
       - erfanbank
 
+  microservice-db-config:
+    extends: network-deploy-service
+    image: mysql
+    healthcheck:
+      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+      timeout: 5s
+      interval: 10s
+      retries: 10
+      start_period: 10s
+    environment:
+      MYSQL_ROOT_PASSWORD : root
+
+
   microservice-base-config:
     extends:
       network-deploy-service
