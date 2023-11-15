@@ -15,6 +15,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
@@ -45,6 +47,8 @@ public class LoansController {
     @Autowired
     private LoansContactInfoDto loansContactInfoDto;
 
+    private final static Logger logger = LoggerFactory.getLogger(LoansController.class);
+
     @PostMapping("/create")
     @Operation(
             summary = "create loan API"
@@ -72,8 +76,9 @@ public class LoansController {
             @ApiResponse(responseCode = "200" , description = "Http Status OK"),
             @ApiResponse(responseCode = "500" , description = "Http Status Internal Server error",content = @Content(schema = @Schema(implementation = ErrorResponseDto.class)))
     })
-    public ResponseEntity<LoansDto> fetchLoan(@Valid @RequestParam @Pattern(regexp="(^$|[0-9]{10})",message = "mobile number must be 10 digits") String mobileNumber){
+    public ResponseEntity<LoansDto> fetchLoan(@RequestHeader("erfanbank_correlation_id") String correlationId , @Valid @RequestParam @Pattern(regexp="(^$|[0-9]{10})",message = "mobile number must be 10 digits") String mobileNumber){
         LoansDto loansDto = iLoansService.fetchLoan(mobileNumber);
+        logger.debug("erfanbank_correlation_id has been FOUND in LoansController {}",correlationId);
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(loansDto);
@@ -137,6 +142,7 @@ public class LoansController {
     }*/
     @GetMapping("/contact-info")
     public ResponseEntity<LoansContactInfoDto> getContactInfo(){
+        logger.debug("/contact-info invoked!");
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(loansContactInfoDto);

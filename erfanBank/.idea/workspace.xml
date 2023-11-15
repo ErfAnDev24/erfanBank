@@ -4,11 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="55f8f5fa-662e-49e9-8cab-b79e43b3c535" name="Changes" comment="gatewayserver">
+    <list default="true" id="55f8f5fa-662e-49e9-8cab-b79e43b3c535" name="Changes" comment="fixing bugs">
+      <change afterPath="$PROJECT_DIR$/accounts/src/main/java/com/example/accounts/service/client/CardsFallBack.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/src/main/java/com/example/accounts/service/client/LoansFallBack.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/getwayserver/src/main/java/com/example/getwayserver/controller/GatewayFallBackCircuitBreaker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/src/main/java/com/example/accounts/controller/AccountsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/src/main/java/com/example/accounts/controller/AccountsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/src/main/java/com/example/accounts/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/src/main/java/com/example/accounts/controller/CustomerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/src/main/java/com/example/accounts/service/ICustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/src/main/java/com/example/accounts/service/ICustomerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/src/main/java/com/example/accounts/service/client/CardsFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/src/main/java/com/example/accounts/service/client/CardsFeignClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/src/main/java/com/example/accounts/service/client/LoansFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/src/main/java/com/example/accounts/service/client/LoansFeignClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/src/main/java/com/example/accounts/service/impl/CustomerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/src/main/java/com/example/accounts/service/impl/CustomerServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cards/src/main/java/com/example/cards/controller/CardsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cards/src/main/java/com/example/cards/controller/CardsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/getwayserver/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/getwayserver/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/getwayserver/src/main/java/com/example/getwayserver/GetwayserverApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/getwayserver/src/main/java/com/example/getwayserver/GetwayserverApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/getwayserver/src/main/java/com/example/getwayserver/filters/ResponseTraceFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/getwayserver/src/main/java/com/example/getwayserver/filters/ResponseTraceFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getwayserver/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/getwayserver/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loans/src/main/java/com/example/loans/controller/LoansController.java" beforeDir="false" afterPath="$PROJECT_DIR$/loans/src/main/java/com/example/loans/controller/LoansController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +93,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.GetwayserverApplication">
+  <component name="RunManager" selected="Spring Boot.ConfigserverApplication">
     <configuration name="AccountsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="accounts" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.accounts.AccountsApplication" />
@@ -124,10 +137,10 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Spring Boot.AccountsApplication" />
-      <item itemvalue="Spring Boot.CardsApplication" />
       <item itemvalue="Spring Boot.ConfigserverApplication" />
       <item itemvalue="Spring Boot.EurekaserverApplication" />
+      <item itemvalue="Spring Boot.AccountsApplication" />
+      <item itemvalue="Spring Boot.CardsApplication" />
       <item itemvalue="Spring Boot.LoansApplication" />
       <item itemvalue="Spring Boot.GetwayserverApplication" />
     </list>
@@ -142,7 +155,7 @@
       <updated>1699708429783</updated>
       <workItem from="1699708430794" duration="14531000" />
       <workItem from="1699777608908" duration="12193000" />
-      <workItem from="1699793153585" duration="41934000" />
+      <workItem from="1699793153585" duration="57602000" />
     </task>
     <task id="LOCAL-00001" summary="I will explain the details in next commit">
       <option name="closed" value="true" />
@@ -272,7 +285,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700047409143</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="fixing bugs">
+      <option name="closed" value="true" />
+      <created>1700049616439</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1700049616439</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -284,9 +305,30 @@
     <MESSAGE value="last commit" />
     <MESSAGE value="my config server and mysql connections has been built" />
     <MESSAGE value="eureka server" />
-    <MESSAGE value="fixing bugs" />
     <MESSAGE value="section one of building Gateway" />
     <MESSAGE value="gatewayserver" />
-    <option name="LAST_COMMIT_MESSAGE" value="gatewayserver" />
+    <MESSAGE value="fixing bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixing bugs" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/cards/src/main/java/com/example/cards/controller/CardsController.java</url>
+          <line>131</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/accounts/src/main/java/com/example/accounts/service/client/CardsFallBack.java</url>
+          <line>11</line>
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/accounts/src/main/java/com/example/accounts/controller/AccountsController.java</url>
+          <line>158</line>
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
