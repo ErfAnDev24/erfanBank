@@ -19,18 +19,18 @@ public class GetwayserverApplication {
 	public RouteLocator erfanBankRouteLocator(RouteLocatorBuilder routeLocatorBuilder){
 		return routeLocatorBuilder.routes()
 				.route(p->p
-						.path("erfanbank/accounts/**")
-						.filters(f->f.rewritePath("erfanbank/accounts/?<segment>.*","${segment}")
+						.path("/erfanbank/accounts/**")
+						.filters(f->f.rewritePath("/erfanbank/accounts/(?<segment>.*)","/${segment}")
 								.addResponseHeader("X-Response-Time",LocalDateTime.now().toString()))
 						.uri("lb://ACCOUNTS"))
 
-				.route(p->p.path("erfanbank/loans/**")
-						.filters(f->f.rewritePath("erfanbank/loans/?<segment>.*","${segment}")
+				.route(p->p.path("/erfanbank/loans/**")
+						.filters(f->f.rewritePath("/erfanbank/loans/(?<segment>.*)","/${segment}")
 								.addResponseHeader("X-Response-Time",LocalDateTime.now().toString()))
 						.uri("lb://LOANS"))
 
-				.route(p->p.path("erfanbank/cards/**")
-						.filters(f->f.rewritePath("erfanbank/cards/?<segment>.*","${segment}")
+				.route(p->p.path("/erfanbank/cards/**")
+						.filters(f->f.rewritePath("/erfanbank/cards/(?<segment>.*)","/${segment}")
 								.addResponseHeader("X-Response-Time",LocalDateTime.now().toString()))
 						.uri("lb://CARDS")).build();
 	}

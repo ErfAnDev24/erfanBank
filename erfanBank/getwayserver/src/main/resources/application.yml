@@ -1,15 +1,14 @@
 spring:
   application:
-    name: "gatewaysever"
-
+    name: "gatewayserver"
+  config:
+    import: "optional:configserver:http://localhost:8071/"
   cloud:
     gateway:
       discovery:
         locator:
           enabled: false
-          lower-case-service-id: true
-  config:
-    import: "optional:configserver:http://localhost:8071/"
+          lowerCaseServiceId: true
 
 management:
   endpoints:
@@ -19,19 +18,19 @@ management:
   endpoint:
     gateway:
       enabled: true
-
   info:
     env:
       enabled: true
 
 info:
   app:
-    name: "gateway server"
-    description: "this is a Microservice for Gateway server"
+    name: "gatewayserver"
+    description: "Erfan bank Gateway Server Application"
     version: "1.0.0"
 
 logging:
   level:
     com:
-      example:
-        getwayserver: DEBUG
+      eazybytes:
+        gatewayserver: DEBUG
+

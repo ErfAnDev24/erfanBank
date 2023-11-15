@@ -4,13 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="55f8f5fa-662e-49e9-8cab-b79e43b3c535" name="Changes" comment="section one of building Gateway">
+    <list default="true" id="55f8f5fa-662e-49e9-8cab-b79e43b3c535" name="Changes" comment="gatewayserver">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose/default/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/default/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose/prod/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/prod/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose/qa/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/qa/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cards/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/cards/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getwayserver/src/main/java/com/example/getwayserver/GetwayserverApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/getwayserver/src/main/java/com/example/getwayserver/GetwayserverApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getwayserver/src/main/java/com/example/getwayserver/filters/RequestTraceFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/getwayserver/src/main/java/com/example/getwayserver/filters/RequestTraceFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/getwayserver/src/main/java/com/example/getwayserver/filters/ResponseTraceFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/getwayserver/src/main/java/com/example/getwayserver/filters/ResponseTraceFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/getwayserver/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/getwayserver/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getwayserver/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/getwayserver/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loans/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/loans/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,7 +138,7 @@
       <updated>1699708429783</updated>
       <workItem from="1699708430794" duration="14531000" />
       <workItem from="1699777608908" duration="12193000" />
-      <workItem from="1699793153585" duration="36328000" />
+      <workItem from="1699793153585" duration="39989000" />
     </task>
     <task id="LOCAL-00001" summary="I will explain the details in next commit">
       <option name="closed" value="true" />
@@ -250,7 +252,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699983066230</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="gatewayserver">
+      <option name="closed" value="true" />
+      <created>1700042262378</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1700042262378</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -264,6 +274,7 @@
     <MESSAGE value="eureka server" />
     <MESSAGE value="fixing bugs" />
     <MESSAGE value="section one of building Gateway" />
-    <option name="LAST_COMMIT_MESSAGE" value="section one of building Gateway" />
+    <MESSAGE value="gatewayserver" />
+    <option name="LAST_COMMIT_MESSAGE" value="gatewayserver" />
   </component>
 </project>
