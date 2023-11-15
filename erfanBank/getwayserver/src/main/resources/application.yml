@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: "gatewaysever"
+
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: false
+          lower-case-service-id: true
+  config:
+    import: "optional:configserver:http://localhost:8071/"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    gateway:
+      enabled: true
+
+  info:
+    env:
+      enabled: true
+
+info:
+  app:
+    name: "gateway server"
+    description: "this is a Microservice for Gateway server"
+    version: "1.0.0"
+
+logging:
+  level:
+    com:
+      example:
+        getwayserver: DEBUG

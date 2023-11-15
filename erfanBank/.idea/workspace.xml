@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="55f8f5fa-662e-49e9-8cab-b79e43b3c535" name="Changes" comment="eureka server">
+    <list default="true" id="55f8f5fa-662e-49e9-8cab-b79e43b3c535" name="Changes" comment="section one of building Gateway">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/src/main/java/com/example/accounts/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/src/main/java/com/example/accounts/controller/CustomerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cards/src/main/java/com/example/cards/entity/Cards.java" beforeDir="false" afterPath="$PROJECT_DIR$/cards/src/main/java/com/example/cards/entity/Cards.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cards/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/cards/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eurekaserver/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/eurekaserver/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/loans/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/loans/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/default/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/default/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/prod/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/prod/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/qa/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/qa/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getwayserver/src/main/java/com/example/getwayserver/filters/ResponseTraceFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/getwayserver/src/main/java/com/example/getwayserver/filters/ResponseTraceFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getwayserver/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/getwayserver/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +20,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -83,7 +82,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.CardsApplication">
+  <component name="RunManager" selected="Spring Boot.GetwayserverApplication">
     <configuration name="AccountsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="accounts" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.accounts.AccountsApplication" />
@@ -112,6 +111,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="GetwayserverApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="getwayserver" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.getwayserver.GetwayserverApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="LoansApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="loans" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.loans.LoansApplication" />
@@ -130,7 +136,7 @@
       <updated>1699708429783</updated>
       <workItem from="1699708430794" duration="14531000" />
       <workItem from="1699777608908" duration="12193000" />
-      <workItem from="1699793153585" duration="24632000" />
+      <workItem from="1699793153585" duration="36328000" />
     </task>
     <task id="LOCAL-00001" summary="I will explain the details in next commit">
       <option name="closed" value="true" />
@@ -228,7 +234,23 @@
       <option name="project" value="LOCAL" />
       <updated>1699968084083</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="fixing bugs">
+      <option name="closed" value="true" />
+      <created>1699971176164</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1699971176164</updated>
+    </task>
+    <task id="LOCAL-00014" summary="section one of building Gateway">
+      <option name="closed" value="true" />
+      <created>1699983066230</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1699983066230</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -240,6 +262,8 @@
     <MESSAGE value="last commit" />
     <MESSAGE value="my config server and mysql connections has been built" />
     <MESSAGE value="eureka server" />
-    <option name="LAST_COMMIT_MESSAGE" value="eureka server" />
+    <MESSAGE value="fixing bugs" />
+    <MESSAGE value="section one of building Gateway" />
+    <option name="LAST_COMMIT_MESSAGE" value="section one of building Gateway" />
   </component>
 </project>
