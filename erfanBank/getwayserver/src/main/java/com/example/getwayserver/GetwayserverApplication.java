@@ -16,22 +16,22 @@ public class GetwayserverApplication {
 	}
 
 	@Bean
-	public RouteLocator erfanBankRouteLocator(RouteLocatorBuilder routeLocatorBuilder){
+	public RouteLocator erfanbankRouteConfig(RouteLocatorBuilder routeLocatorBuilder) {
 		return routeLocatorBuilder.routes()
-				.route(p->p
+				.route(p -> p
 						.path("/erfanbank/accounts/**")
-						.filters(f->f.rewritePath("/erfanbank/accounts/(?<segment>.*)","/${segment}")
-								.addResponseHeader("X-Response-Time",LocalDateTime.now().toString()))
+						.filters( f -> f.rewritePath("/erfanbank/accounts/(?<segment>.*)","/${segment}")
+								.addResponseHeader("X-Response-Time", LocalDateTime.now().toString()))
 						.uri("lb://ACCOUNTS"))
-
-				.route(p->p.path("/erfanbank/loans/**")
-						.filters(f->f.rewritePath("/erfanbank/loans/(?<segment>.*)","/${segment}")
-								.addResponseHeader("X-Response-Time",LocalDateTime.now().toString()))
+				.route(p -> p
+						.path("/erfanbank/loans/**")
+						.filters( f -> f.rewritePath("/erfanbank/loans/(?<segment>.*)","/${segment}")
+								.addResponseHeader("X-Response-Time", LocalDateTime.now().toString()))
 						.uri("lb://LOANS"))
-
-				.route(p->p.path("/erfanbank/cards/**")
-						.filters(f->f.rewritePath("/erfanbank/cards/(?<segment>.*)","/${segment}")
-								.addResponseHeader("X-Response-Time",LocalDateTime.now().toString()))
+				.route(p -> p
+						.path("/erfanbank/cards/**")
+						.filters( f -> f.rewritePath("/erfanbank/cards/(?<segment>.*)","/${segment}")
+								.addResponseHeader("X-Response-Time", LocalDateTime.now().toString()))
 						.uri("lb://CARDS")).build();
 	}
 }
